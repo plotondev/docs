@@ -3,7 +3,6 @@
 ### Development
 
 ```bash
-npm i --location=global mintlify
-# mintlify install
-mintlify dev
+npm install
+npm run dev
 ```
