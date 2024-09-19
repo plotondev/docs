@@ -1,98 +1,67 @@
 ---
-title: 'Development'
-description: 'Learn how to preview changes locally'
+title: "Development"
+description: "Empower your users with Ploton in shortest time possible"
 ---
 
 <Info>
-  **Prerequisite** You should have installed Node.js (version 18.10.0 or
-  higher).
+  **Prerequisite** You should have a frontend application and a backend
+  application each.
 </Info>
 
-Step 1. Install Mintlify on your OS:
+Step 1. Install Ploton Backend SDK in your Backend Server or Service:
 
 <CodeGroup>
 
 ```bash npm
-npm i -g mintlify
+npm install @ploton/backend-sdk
 ```
 
-```bash yarn
-yarn global add mintlify
+```bash golang
+go get https://github.com/plotondev/ploton/backend-sdk
 ```
 
 </CodeGroup>
 
-Step 2. Go to the docs are located (where you can find `mint.json`) and run the following command:
+Step 2. Install Ploton Frontend SDK in your Frontend application:
 
-```bash
-mintlify dev
+```bash npm
+npm install @ploton/frontend-sdk
 ```
 
-The documentation website is now available at `http://localhost:3000`.
+Step 3. Authenticate with Ploton and get your tokens
 
-### Custom Ports
-
-Mintlify uses port 3000 by default. You can use the `--port` flag to customize the port Mintlify runs on. For example, use this command to run in port 3333:
-
-```bash
-mintlify dev --port 3333
-```
-
-You will see an error like this if you try to run Mintlify in a port that's already taken:
-
-```md
-Error: listen EADDRINUSE: address already in use :::3000
-```
-
-## Mintlify Versions
-
-Each CLI is linked to a specific version of Mintlify. Please update the CLI if your local website looks different than production.
+With a simple call to ploton sever, you can get `tokens` that your frontend and users would require.
 
 <CodeGroup>
 
-```bash npm
-npm i -g mintlify@latest
+```bash typescript
+const { token } = ploton.authenticate(user, accessToken, hash);
 ```
 
-```bash yarn
-yarn global upgrade mintlify
+```bash golang
+token := ploton.authenticate(user, accessToken, hash)
 ```
 
 </CodeGroup>
 
-## Deployment
+Step 3. Setup frontend
 
-<Tip>
-  Unlimited editors available under the [Startup
-  Plan](https://mintlify.com/pricing)
-</Tip>
-
-You should see the following if the deploy successfully went through:
+<Tip>You can setup fronend first too.</Tip>
 
 <Frame>
-  <img src="/images/checks-passed.png" style={{ borderRadius: '0.5rem' }} />
+  <Ploton user={user} token={accessToken} hash={hash} />
 </Frame>
 
 ## Troubleshooting
 
-Here's how to solve some common problems when working with the CLI.
+Here's how to solve some common problems when working with Ploton SDKs.
 
 <AccordionGroup>
-  <Accordion title="Mintlify is not loading">
-    Update to Node v18. Run `mintlify install` and try again.
+  <Accordion title="App not registered">
+    See if your key or subscription has expired. If so, get a new one.
   </Accordion>
-  <Accordion title="No such file or directory on Windows">
-Go to the `C:/Users/Username/.mintlify/` directory and remove the `mint`
-folder. Then Open the Git Bash in this location and run `git clone
-https://github.com/mintlify/mint.git`.
-
-Repeat step 3.
-
-  </Accordion>
+  <Accordion title="No such endpoint.">Do not use raw endpoints.</Accordion>
   <Accordion title="Getting an unknown error">
-    Try navigating to the root of your device and delete the ~/.mintlify folder.
-    Then run `mintlify dev` again.
+    Try reaching out to support.
   </Accordion>
 </AccordionGroup>
-
-Curious about what changed in a CLI version? [Check out the CLI changelog.](/changelog/command-line)

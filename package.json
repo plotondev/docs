@@ -1,0 +1,16 @@
+{
+  "private": true,
+  "name": "plotondev-docs",
+  "version": "1.0.0",
+  "description": "### Development",
+  "main": "index.js",
+  "scripts": {
+    "dev": "./node_modules/.bin/mintlify dev"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "mintlify": "^4.0.223"
+  }
+}
